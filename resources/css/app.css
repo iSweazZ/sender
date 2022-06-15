@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Discord";
+    src: url("/ressources/fonts/discord.otf");
+}
+
+@font-face {
+    font-family: "Stack";
+    src: url("/ressources/fonts/slack.otf");
+}
+
+@font-face {
+    font-family: "default";
+    src: url("/ressources/fonts/default.ttf");
+}
+
+body{
+    font-family: "default";
+}
+    
+.discordWordColor{
+    color: #7289d9;
+    font-family: "Discord";
+}
+
+.slackWordColor{
+    color: #E01E5A;
+    font-family: "Stack";
+}
+
+.customTextSize3vw{
+    font-size: 3vw;
+}
