@@ -1,4 +1,4 @@
-@extends("layouts.default")
+@extends("layouts.default", ['title' => 'Accueil'])
 
 @section("customHead")
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -21,7 +21,6 @@
         </div>
     @endif
 
-    <h1 class="flex justify-center mt-5 text-5xl text-white">{{config('app.name', 'Laravel')}}</h1>
     <h1 class="text-white ml-11 mt-36" style="font-size: 3vw" id="welcomeSentence">Programmez l'envoi de vos messages sur <span id="typedPlateforme" class="discordWordColor ml-2 underline"></span></h1>
     <object class="absolute top-1/4" style="width: 20vw;" data="/ressources/SVG/watchAnimations.svg" type="image/svg+xml"></object>
     <h1 class="text-white mt-52" style="font-size: 3vw; margin-left: 45%">Envoyez votre message <span id="typedTime"></span></h1>
