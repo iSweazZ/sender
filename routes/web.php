@@ -18,8 +18,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/messageManager',[createMessage::class, "index"])->middleware(['auth'])->name(('messageManager'));
-
+Route::get('/messageManager',[createMessage::class, "index"])->middleware(['auth'])->name(('message.manage'));
+Route::post('/messageManager',[createMessage::class, "sendMessageRequest"])->middleware(['auth'])->name(('message.create'));
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

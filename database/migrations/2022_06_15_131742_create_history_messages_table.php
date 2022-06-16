@@ -18,11 +18,10 @@ class CreateHistoryMessagesTable extends Migration
             $table->mediumText("content");
             $table->date("createAt");
             $table->date("sendAt");
-            $table->boolean("discordSuccess");
-            $table->boolean("slackSuccess");
             $table->longText("discordError")->nullable();
             $table->longText("slackError")->nullable();
             $table->foreignId("user_id")->constrained();
+            $table->timestamps();
         });
     }
 

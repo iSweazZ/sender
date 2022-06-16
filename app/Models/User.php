@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(historyMessages::class);
     }
+    
+    public function getUserPendingMessages()
+    {
+        return $this->hasMany(createMessages::class);
+    }
 }
