@@ -83,12 +83,22 @@ class sendMessages extends Controller
             {
                 return curl_error($curlDiscordwh);
             }
+            $httpCode = curl_getinfo($curlDiscordwh, CURLINFO_HTTP_CODE);
             curl_close($curlDiscordwh);
+
             if($data != null && strpos($lien, "discord.com"))
             {
-                return json_decode($data)->{"message"};
+                $data = json_decode($data)->{"message"};
             }
-            return $data;
+
+            if($httpCode == 200)//On vérifie si la requête a fonctionnée
+            {
+                return null;
+            }
+            else
+            {
+                return $data;//Si la requete n'a pas fonctionnée on retourne l'erreur
+            }
         }
     }
 

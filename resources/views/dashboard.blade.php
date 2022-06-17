@@ -11,7 +11,10 @@
             <div onclick="location.href = `{{route('message.manage')}}`" id="divMessage"class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center mr-6 mb-6 cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardMessage" class="iUnderline fas fa-marker text-gray-400 text-3xl"></i><span id="spanDashboardMessage" class="align-middle ml-7">Programmer / Rédiger un message</span></div>
             <div id="divGestionMessages"class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center ml-6 mb-6 cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardGestion" class="iUnderline fas fa-tasks text-gray-400 text-3xl"></i><span id="spanDashboardGestion" class="align-middle ml-7">Gérer la plannification de vos messages</span></div>
             <div id="divSettings"class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center mr-6 mt-6 cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardSettings" class="iUnderline fas fa-cog text-gray-400 text-3xl"></i><span id="spanDashboardSettings" class="align-middle ml-7">Paramètres</span></div>
-            <div id="divDeconnexion"class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center ml-6 mt-6 cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardDeconnexion" class="iUnderline fas fa-sign-out-alt text-gray-400 text-3xl"></i><span id="spanDashboardDeconnexion" class="align-middle ml-7">Déconnexion</span></div>
+            <form method="POST" action="{{ route('logout') }}" class="h-full w-full ml-6 mt-6">
+                <div id="divDeconnexion" onclick="event.preventDefault();this.closest('form').submit();" class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardDeconnexion" class="iUnderline fas fa-sign-out-alt text-gray-400 text-3xl"></i><span id="spanDashboardDeconnexion" class="align-middle ml-7">Déconnexion</span></div>
+                            @csrf
+                </form>
         </div>
     
     <script>

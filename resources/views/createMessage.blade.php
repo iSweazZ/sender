@@ -7,7 +7,7 @@
 
 @section('content')
 
-<div class="grid grid-cols-3 text-center place-items-center ml-auto mr-auto center w-full" style="height: 80vh; margin-top: 2vh;filter:blur(100px)">
+<div id="mainDiv" class="grid grid-cols-3 text-center place-items-center ml-auto mr-auto center w-full" style="height: 80vh; margin-top: 2vh;">
     <div class="grid grid-cols-1 w-full text-center place-items-center ml-auto mr-auto center" style="margin-top: 5vh;">
         @if ( $discord_webhook == null)
             <div id="discordWebhookNotConfigured" class="bg-red-700 w-4/5 h-full cursor-pointer p-10 rounded-lg">
@@ -22,8 +22,8 @@
         @endif
 
         @if ($slack_webhook != null && $discord_webhook != null)
-        <div id="slackdWebhookNotConfigured" class=" w-4/5 h-full cursor-pointer p-10 rounded-lg mt-5 border border-white">
-        <i class="fas fa-paper-plane text-gray-400 text-3xl mr-3"></i><span id="spanSendMessage" class="text-white" style="font-size: 2vmin;"> Envoyer un message</span>
+        <div id="slackdWebhookNotConfigured" class=" w-4/5 h-full cursor-pointer p-10 rounded-lg mt-5 border border-white" onclick="MessagePannelAnimation()">
+            <i class="fas fa-paper-plane text-gray-400 text-3xl mr-3"></i><span id="spanSendMessage" class="text-white" style="font-size: 2vmin;"> Envoyer un message</span>
         </div>  
         @endif
     </div>
@@ -76,19 +76,32 @@
             @endforelse
     </div>
 </div>
-
-<div id="divWriteAndSendMessage" class="absolute border border-white w-3/4" style="background-color: rgb(54, 57, 63);top:20%;left: 12.5%;height: 60%;">
+<!-- top:20%;left: 12.5% -->
+<div id="divWriteAndSendMessage" class="absolute border border-white w-3/4" style="background-color: rgb(54, 57, 63);left: 200%;top: 20%;height: 60%;">
     <h1 class="text-white text-3xl text-center mt-3 mb-8">Envoyer un message</h1>
-    <span class="absolute right-4 top-3 text-xl text-red-700 font-bold cursor-pointer">X</span>
+    <span class="absolute right-4 top-3 text-xl text-red-700 font-bold cursor-pointer" onclick="MessagePannelAnimation();">X</span>
     
     <form action="{{route('message.create')}}" method="post" class="text-center">
         @csrf
         <textarea name="messageContent" class="w-11/12 h-3/4 ml-auto mr-auto" id="messageContentArea" cols="30" rows="10" style="resize:none" required></textarea><br>
         <label for="dateTimeSendMessage" class="text-white text-lg mt-5">Quand voulez-vous envoyer votre message ?</label><br>
-        <input type="datetime-local" class="mt-5" autocomplete="on" name="sendDate" id="dateTimeSendMessage" value="{{date('Y-m-d')}}T{{date('h:i:s')}}" required><br>
+        <input type="datetime-local" class="mt-5" autocomplete="on" name="sendDate" id="dateTimeSendMessage" value="{{date('Y-m-d')}}T{{date('h:i:00')}}" required><br>
         <button type="submit" name="sendNow" class="border border-white text-white w-1/4 pt-4 pb-4 mr-4 mt-5" value="0">Envoyer à la date indiquée</button>
         <button type="submit" name="sendNow" class="border border-white text-white w-1/4 pt-4 pb-4 ml-4 mt-5" value="1">Envoyer maintenant</button>
     </form>
 </div>
+
+<script>
+   let tl1 = gsap.timeline({reversed: true});
+    tl1.fromTo("#divWriteAndSendMessage", {left: "200%"}, {left: "12.5%", duration:1}, 0);
+    let tl2 = gsap.timeline({reversed: true});
+    tl2.fromTo("#mainDiv", {filter: "blur(0px)"}, {filter: "blur(100px)", duration:1}, 0);
+
+    function MessagePannelAnimation()
+    {
+        tl1.reversed(!tl1.reversed());
+        tl2.reversed(!tl2.reversed());
+    }
+</script>
 
 @endsection

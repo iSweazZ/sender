@@ -43,6 +43,12 @@ class createMessage extends Controller
             $msg->date = $request->sendDate;
             $msg->save();
         }
+        return view("createMessage", [
+            "discord_webhook" => User::where('id', Auth::user()->id)->first()->getAttribute("discord_webhook"),
+            "slack_webhook" => User::where('id', Auth::user()->id)->first()->getAttribute("slack_webhook"),
+            "history_Messages" => User::where('id', Auth::user()->id)->first()->getHistoryMessage()->get(),
+            "pending_Messages" => User::where('id', Auth::user()->id)->first()->getUserPendingMessages()->get(),
+        ]);
     }
 
     /**
