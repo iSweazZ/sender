@@ -23,7 +23,8 @@ class User extends Authenticatable
         'email',
         'password',
         'discord_webhook',
-        'slack_webhook'
+        'slack_webhook',
+        "message_predefini"
     ];
 
     /**

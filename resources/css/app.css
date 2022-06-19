@@ -34,3 +34,64 @@ body{
 .customTextSize3vw{
     font-size: 3vw;
 }
+
+.customFont2vmin{
+    font-size: 2vmin;
+}
+
+#gridMainMenu{
+    height: 60vh;
+    margin-top: 6.25%;
+}
+
+.customBg-gray{
+    background-color:rgb(54, 57, 63);
+}
+
+.customDivBg-Gray{
+    background-color: rgb(54, 57, 63);
+}
+
+.custom-Left-200{
+    left: 200%;
+}
+
+.custom-Top-35{
+    top: 35%;
+}
+
+.custom-Top-20{
+    top: 20%;
+}
+
+.custom-Height-30{
+    height: 30%;
+}
+
+.custom-Height-60{
+    height: 60%;
+}
+
+.custom-Height-80vh{
+    height: 80vh;
+}
+
+.custom-mt-5vh{
+    margin-top: 5vh;
+}
+
+.custom-mt-2vh{
+    margin-top: 2vh;
+}
+
+.customDivButtonMessagePannelTop{
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 46%;
+}
+
+.customDivButtonMessagePannelBottom{
+    margin-left: 1%; 
+    margin-right: 1%; 
+    width: 95%;
+}

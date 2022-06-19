@@ -20,9 +20,8 @@
         <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a> -->
         @endauth
     </div>
+    <h1 class="block text-white ml-11 font-extrabold text-transparent bg-clip-text z-50 bg-gradient-to-tr from-violet-900 to-rose-600" style="font-size: 8vmin; margin-top: 10%;transform: translateY(-50%);" id="welcomeSentence"><br><br><br><br>Gérez l'envoi <br>de vos messages <span id="typedPlateforme" class="discordWordColor ml-2 underline -z-0"></span><br>sur une seule plateforme<br>en toute simplicité<br></h1>    <!-- <object class="absolute top-1/4" style="width: 20vw;" data="/ressources/SVG/watchAnimations.svg" type="image/svg+xml"></object> -->
 
-    <h1 class="block text-white ml-11 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-violet-900 to-rose-600" style="font-size: 4vw; margin-top: 20%;transform: translateY(-50%);" id="welcomeSentence">Programmez<br> l'envoi de vos messages <br>sur <span id="typedPlateforme" class="discordWordColor ml-2 underline -z-0"></span><br>et changez la date d'envoi <br>quand vous le voulez</h1>
-    <!-- <object class="absolute top-1/4" style="width: 20vw;" data="/ressources/SVG/watchAnimations.svg" type="image/svg+xml"></object> -->
 
     <script>
         let delayBetweenBlur = 2;

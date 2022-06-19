@@ -16,8 +16,8 @@ class CreateHistoryMessagesTable extends Migration
         Schema::create('history_messages', function (Blueprint $table) {
             $table->id();
             $table->mediumText("content");
-            $table->date("createAt");
-            $table->date("sendAt");
+            $table->timestamp("createAt");
+            $table->timestamp("sendAt");
             $table->longText("discordError")->nullable();
             $table->longText("slackError")->nullable();
             $table->foreignId("user_id")->constrained();

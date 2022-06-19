@@ -9,14 +9,16 @@ class sendMessages extends Controller
 {
         private $discord_webhook;
         private $slack_webhook;
+        private $user_id;
 
         public function __construct($userID)
         {
             $this->discord_webhook = User::where('id', $userID)->first()->getAttribute("discord_webhook");
             $this->slack_webhook = User::where('id', $userID)->first()->getAttribute("slack_webhook");
+            $this->user_id = $userID;
         }
 
-        public function sendMessageByString($message, $userID)
+        public function sendMessageByString($message)
         {
             date_default_timezone_set('Europe/Paris');
             $date = date("Y-m-d H-i-s");
@@ -29,8 +31,9 @@ class sendMessages extends Controller
             $historiqueDiscord->sendAt = $date;
             $historiqueDiscord->discordError = $DiscordSuccess;
             $historiqueDiscord->slackError = $SlackSuccess;
-            $historiqueDiscord->user_id = $userID;
+            $historiqueDiscord->user_id = $this->user_id;
             $historiqueDiscord->save();
+            return [$DiscordSuccess == null, $SlackSuccess == null];
         }
 
         public function sendMessageByCommand($messageObject)

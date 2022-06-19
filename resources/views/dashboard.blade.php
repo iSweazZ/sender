@@ -7,49 +7,23 @@
 
 @section("content")
     
-        <div class="grid grid-cols-2 gap-4 text-white w-3/4 text-center place-items-center ml-auto mr-auto center" style="height: 60vh;margin-top: 6.25%;">
-            <div onclick="location.href = `{{route('message.manage')}}`" id="divMessage"class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center mr-6 mb-6 cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardMessage" class="iUnderline fas fa-marker text-gray-400 text-3xl"></i><span id="spanDashboardMessage" class="align-middle ml-7">Programmer / Rédiger un message</span></div>
-            <div id="divGestionMessages"class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center ml-6 mb-6 cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardGestion" class="iUnderline fas fa-tasks text-gray-400 text-3xl"></i><span id="spanDashboardGestion" class="align-middle ml-7">Gérer la plannification de vos messages</span></div>
-            <div id="divSettings"class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center mr-6 mt-6 cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardSettings" class="iUnderline fas fa-cog text-gray-400 text-3xl"></i><span id="spanDashboardSettings" class="align-middle ml-7">Paramètres</span></div>
-            <form method="POST" action="{{ route('logout') }}" class="h-full w-full ml-6 mt-6">
-                <div id="divDeconnexion" onclick="event.preventDefault();this.closest('form').submit();" class="divExtensive border-solid border border-white h-full w-full text-center rounded-3xl flex items-center justify-center cursor-pointer bg-zinc-900" style="font-size: 2vmin;"><i id="iDashboardDeconnexion" class="iUnderline fas fa-sign-out-alt text-gray-400 text-3xl"></i><span id="spanDashboardDeconnexion" class="align-middle ml-7">Déconnexion</span></div>
-                            @csrf
+        <div class="grid grid-cols-2 gap-4 text-white w-3/4 text-center place-items-center ml-auto mr-auto center" id="gridMainMenu">
+            <div class="p-1 bg-gradient-to-tr from-violet-900 to-rose-600 rounded-3xl h-full w-full mr-6 mb-6 divExtensive" id="borderStyleMainMenuTr">
+                <div onclick="location.href = `{{route('message.manage')}}`" id="divMessage"class="flex justify-center items-center h-full w-full text-center rounded-3xl cursor-pointer bg-zinc-900 customFont2vmin"><i id="iDashboardMessage" class="iUnderline fas fa-marker text-gray-400 text-3xl"></i><span id="spanDashboardMessage" class="align-middle ml-7">Programmer / Rédiger un message</span></div>
+            </div>
+            <div class="p-1 bg-gradient-to-tr from-violet-900 to-rose-600 rounded-3xl h-full w-full ml-6 mb-6 divExtensive" id="borderStyleMainMenuTl">
+                <div id="divGestionMessages" onclick="location.href = `{{route('message.predefined')}}`" class="flex justify-center items-center h-full w-full text-center rounded-3xl cursor-pointer bg-zinc-900 customFont2vmin"><i id="iDashboardGestion" class="iUnderline fas fa-paper-plane text-gray-400 text-3xl"></i><span id="spanDashboardGestion" class="align-middle ml-7">Envoyez votre message prédéfini</span></div>
+            </div>
+            <div class="p-1 bg-gradient-to-tr from-violet-900 to-rose-600 rounded-3xl h-full w-full mr-6 mt-6 divExtensive" id="borderStyleMainMenuBl">
+                <div id="divSettings" onclick="location.href = `{{route('settings.manage')}}`" class="flex justify-center items-center h-full w-full text-center rounded-3xl cursor-pointer bg-zinc-900 customFont2vmin"><i id="iDashboardSettings" class="iUnderline fas fa-cog text-gray-400 text-3xl"></i><span id="spanDashboardSettings" class="align-middle ml-7">Paramètres</span></div>
+
+            </div>
+            <div class="p-1 bg-gradient-to-tr from-violet-900 to-rose-600 rounded-3xl h-full w-full ml-6 mt-6 divExtensive" id="borderStyleMainMenuBr">
+                <form method="POST" action="{{ route('logout') }}" class="h-full w-full">
+                    <div id="divDeconnexion" onclick="event.preventDefault();this.closest('form').submit();" class="flex justify-center items-center h-full w-full text-center rounded-3xl cursor-pointer bg-zinc-900 customFont2vmin"><i id="iDashboardDeconnexion" class="iUnderline fas fa-sign-out-alt text-gray-400 text-3xl"></i><span id="spanDashboardDeconnexion" class="align-middle ml-7">Déconnexion</span></div>
+                                @csrf
                 </form>
+            </div>
         </div>
-    
-    <script>
-        let duration = 0.6;
-        let iDashboardIds = [
-            ["#iDashboardMessage", "#spanDashboardMessage"],
-            ["#iDashboardGestion", "#spanDashboardGestion"],
-            ["#iDashboardSettings", "#spanDashboardSettings"],
-            ["#iDashboardDeconnexion", "#spanDashboardDeconnexion"]
-        ];
-        let compteur = 0;
-        document.querySelectorAll(".divExtensive").forEach(dashBoardDivButton =>{
-            dashBoardDivButton.tl = gsap.timeline({reversed: true});
-            dashBoardDivButton.tl
-            .fromTo(`#${dashBoardDivButton.getAttribute("id")}`, {width: "100%", height: "100%", backgroundColor: "rgb(24,24,27)"}, {duration: duration, width: "105%", height: "105%", backgroundColor: "rgb(54, 57, 63)"}, 0)//1.875
-            .fromTo(iDashboardIds[compteur][0], {fontSize: "1.875rem"}, {fontSize: "2.3rem"}, 0)
-            .fromTo(iDashboardIds[compteur][1], {fontSize: "2vmin"}, {fontSize: "3vmin"}, 0);
-
-            console.log(iDashboardIds[compteur][0]);
-            console.log(dashBoardDivButton.tl);
-            dashBoardDivButton.addEventListener("mouseenter", (e) =>{playButtonAnimation(dashBoardDivButton)}, 0)
-            dashBoardDivButton.addEventListener("mouseleave", (e) => {playButtonAnimation(dashBoardDivButton)}, 0);
-            compteur++;
-        })
-
-        document.querySelectorAll(".iUnderline").forEach(dashboardIUnderline =>{
-            dashboardIUnderline.tl = gsap.timeline({reversed: true});
-            dashboardIUnderline.tl.fromTo(`#${dashboardIUnderline.getAttribute("id")}`, {})
-        })
-
-
-        function playButtonAnimation(dashBoardDivButton)
-        {
-            dashBoardDivButton.tl.reversed(!dashBoardDivButton.tl.reversed());
-        }
-    </script>
-
+        <script src="ressources/js/dashboard.js"></script>
 @endsection

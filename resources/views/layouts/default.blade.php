@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('customHead')
 </head>
-<body class="bg-zinc-900">
+<body class="bg-zinc-900 overflow-x-hidden">
 <h1 id="appTitleDashboard" class="text-white customTextSize3vw text-center">{{config('app.name', 'Laravel')}} - {{ucfirst($title ?? '')}}</h1>
     @yield('content')
 </body>
