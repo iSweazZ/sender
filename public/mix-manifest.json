@@ -1,4 +1,11 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/ressources/fonts/default.ttf": "/ressources/fonts/default.ttf",
+    "/ressources/fonts/discord.otf": "/ressources/fonts/discord.otf",
+    "/ressources/fonts/slack.otf": "/ressources/fonts/slack.otf",
+    "/ressources/images/discord.png": "/ressources/images/discord.png",
+    "/ressources/images/slack.png": "/ressources/images/slack.png",
+    "/ressources/js/dashboard.js": "/ressources/js/dashboard.js",
+    "/ressources/SVG/watchAnimations.svg": "/ressources/SVG/watchAnimations.svg"
 }

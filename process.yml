@@ -1,0 +1,7 @@
+apps:
+  # Modifiez le lien /var/www/sender en fonction de l'emplacement du projet
+  - script    : 'artisan'
+    name      : 'artisan-queue-listen'
+    cwd       : '/var/www/sender'
+    args      : 'schedule:work'
+    interpreter : 'php'
